@@ -1,0 +1,2 @@
+//el plugin war incluye el plugin java
+apply plugin: 'war'

@@ -1,0 +1,9 @@
+subprojects {
+	repositories {
+	    jcenter()
+	}
+}
+
+task wrapVersion(type: Wrapper) {
+   gradleVersion = '5.6'
+}
