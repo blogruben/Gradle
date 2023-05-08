@@ -1,4 +1,4 @@
-package dsl;
+package org.ruben.dsl.domain;
 
 public class Ruta {
 
