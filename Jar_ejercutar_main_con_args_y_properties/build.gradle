@@ -61,12 +61,15 @@ task pasarPropiedadesConArgumentos (type: JavaExec){
 //4.saludo: hola
 task verPropiedades {
     doFirst {
-        println "1.applicationName "+applicationName     
-        println "2.projectName: "+project.getProperty("projectName")
+        println System.getProperty("projectName")
+        println "1.applicationName "+applicationName   
+        println project.getProperty("projectName") ? "2.projectName: "+project.getProperty("projectName") : 'no message'
         println "3.myvariable: "+System.getProperty("myvariable")   
         if (project.hasProperty("saludo")) {
             println "4.saludo: "+project.getProperty("saludo")
         } 
+        println System.getProperty("mymessage") ? System.getProperty("mymessage") : 'no message'
+
         //for(Map.Entry p: project.getProperties()) {
         //    println p;
         //}
