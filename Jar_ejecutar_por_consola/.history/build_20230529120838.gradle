@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+task ejecutarComandoPowershell (type: Exec) {
+    workingDir "."
+    commandLine 'cmd', '/c', 'Powershell ls'
+}
+
+task ejecutarScriptPowershell(type:Exec) {
+   commandLine 'cmd', '/c', 'Powershell  -File  script.ps1'
+}
+
+task ejecutarComandoCmd (type: Exec) {
+    workingDir "."
+    commandLine 'cmd', '/c', 'dir'
+}
+
+task ejecutarScriptCmd (type: Exec) {
+    workingDir "."
+    commandLine 'cmd', '/c', 'script.bat'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+task wrapVersion(type: Wrapper) {
+   gradleVersion = '5.6' 
+}
+
