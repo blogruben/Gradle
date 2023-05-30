@@ -18,7 +18,7 @@ assemble es una tarea anterios a build y compila igual pero sin hace los checks
 `gradle assemble`
 Vamos a build/libs/hola-mundo-web.war y vemos en contenido del war
 ```cmd
-jar -tf build/libs
+jar -tf build/libs/Hola_mundo_web.war
 > META-INF/
 > META-INF/MANIFEST.MF
 > index.html
