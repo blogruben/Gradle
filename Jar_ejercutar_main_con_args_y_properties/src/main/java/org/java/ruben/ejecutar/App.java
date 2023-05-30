@@ -10,10 +10,9 @@ public class App {
         Arrays.stream(args).forEach(str -> System.out.print(str + ", "));
 
         System.out.println(System.lineSeparator()+"La propiedad myvariable -> "+System.getProperty("myvariable"));
-        System.out.println(System.lineSeparator()+"La propiedad applicationName -> "+System.getProperty("applicationName"));
-        System.out.println(System.lineSeparator()+"La propiedad saludar -> "+System.getProperty("saludar"));
-
-
+        System.out.println("La propiedad applicationName -> "+System.getProperty("applicationName"));
+        System.out.println("La propiedad saludar -> "+System.getProperty("saludar"));
+        System.out.println("La propiedad file.encoding -> "+System.getProperty("file.encoding")); //definido en gradle.properties
     }
 
 

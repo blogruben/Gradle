@@ -27,17 +27,27 @@ if (project.hasProperty("args")) {
 }
 
 //gradle pasarPropiedadesConArgumentos --args="lorem ipsum dolor" -Dmyvariable=unValor
+//Los argumentos son -> lorem, ipsum, dolor,
+//La propiedad myvariable -> unValor
+//La propiedad applicationName -> GradleApp   
+//La propiedad saludar -> null
+//La propiedad file.encoding -> UTF-8
 task leerVariables (type: JavaExec){
     group = "Execution"
     description = "Run the main class with pasarArgumentosPropiedadesAOtroMetodo"
     classpath = sourceSets.main.runtimeClasspath
     main = javaMainClass
     args cmdargs.split()
-    systemProperties System.getProperties()
+    systemProperties System.getProperties() //pasar todas las propiedades
 }
 
 //The -P flag is for gradle properties, and the -D flag is for JVM properties
 //gradle pasarPropiedadesConArgumentos --args="lorem ipsum dolor" -Dmyvariable=unValor -Psaludo=hola
+//Los argumentos son -> lorem, ipsum, dolor,  
+//La propiedad myvariable -> unValor
+//La propiedad applicationName -> GradleApp   
+//La propiedad saludar -> hola
+//La propiedad file.encoding -> UTF-8
 task pasarPropiedadesConArgumentos (type: JavaExec){
     group = "Execution"
     description = "Run the main class with pasarArgumentosPropiedadesAOtroMetodo"
@@ -50,7 +60,7 @@ task pasarPropiedadesConArgumentos (type: JavaExec){
     if (project.hasProperty("saludo")) {
         systemProperties['saludar'] = project.getProperty("saludo")
     }
-    systemProperties System.getProperties()
+    systemProperties['myvariable'] = System.getProperty("myvariable")
 }
 
 //The -P flag is for gradle properties, and the -D flag is for JVM properties
@@ -69,7 +79,6 @@ task verPropiedades {
             println "4.saludo: "+project.getProperty("saludo")
         } 
         println System.getProperty("mymessage") ? System.getProperty("mymessage") : 'no message'
-
         //for(Map.Entry p: project.getProperties()) {
         //    println p;
         //}
