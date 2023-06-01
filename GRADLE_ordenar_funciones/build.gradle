@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+task verOrdenado {
+    doLast{
+        println "Adios 1"
+        println "Adios 2" 
+    }
+    doFirst {
+        println "Hola 1"
+        println "Hola 2"
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+task wrapVersion(type: Wrapper) {
+   gradleVersion = '5.6' 
+}
+
+task mover1 (type: Copy, dependsOn: ['borrarArchivosPruebas']) {
+    from "./origen1"
+	into "./destino"
+}
+
+task mover2 (type: Copy, dependsOn: ['borrarArchivosPruebas']) {
+    from "./origen2"
+	into "./destino"
+}
+
+task borrarArchivosPruebas(type: Delete) {
+   delete file('./destino').listFiles() 
+}
