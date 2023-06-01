@@ -1,0 +1,54 @@
+
+//gradle esImpar
+//> Task :inicio
+//inicio
+//
+//> Task :esImpar
+//doFirst
+//El numero 4 es par
+//
+//> Task :terminar
+//terminar
+
+ext {
+    numero = 4
+}
+
+task esImpar {
+	group = "Prueba"
+    description "Indica si un numero es impar"
+    
+    doFirst {
+        println "doFirst"
+    }
+
+    doLast {
+        if(numero%2 == 0)
+            println "El numero $numero es par"
+        else
+            println "El numero $numero es impar"
+    }
+}
+
+task inicio {
+    group = "ordenar"
+    description = "tarea inicio"
+
+    doLast {
+        println "inicio"
+    }
+}
+
+task terminar {
+    group = "ordenar"
+    description = "tarea terminar"
+
+    doLast {
+        println "terminar"
+    }
+}
+
+//Ejecutamos inicio antes de esImpar
+esImpar.dependsOn inicio
+//Ejecutamos terminar despues de esImpar
+esImpar.finalizedBy terminar

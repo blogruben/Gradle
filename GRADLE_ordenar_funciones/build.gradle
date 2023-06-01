@@ -2,71 +2,15 @@ plugins {
     id 'java'
 }
 
-//definimos variables que podemos usar en las tareas
-ext {
-    numero = 4
-}
-
-//asignar grupo descripcion a la tarea
-task tarea1 {
-    group = "Prueba"
-    description = "Tarea1"
-
-    doLast {
-        println "tarea1"
-    }
-}
-
-
-task esImpar {
-    //El grupo y descripcion se muestra con gradle tasks
-	group = "Prueba"
-    description "Indica si un numero es impar"
-    
-    doFirst {
-        println "doFirst"
-    }
-
-    doLast {
-        if(numero%2 == 0)
-            println "El numero $numero es par"
-        else
-            println "El numero $numero es impar"
-    }
-}
-
-//Ejecutamos tarea1 antes de esImpar
-//esImpar.dependsOn tarea1
-//Ejecutamos tarea1 despues de esImpar
-esImpar.finalizedBy tarea1
-
-task verOrdenado {
-    doLast{
-        println "Adios 1"
-        println "Adios 2" 
-    }
-    doFirst {
-        println "Hola 1"
-        println "Hola 2"
-    }
-}
+apply from: './hacerPrimero.gradle'
+apply from: './variables.gradle'
+apply from: './ordenarMoverFichero.gradle'
+apply from: './ordenarFunciones1.gradle'
+apply from: './ordenarFunciones2.gradle'
+apply from: './ordenarFunciones3.gradle'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 task wrapVersion(type: Wrapper) {
    gradleVersion = '5.6' 
-}
-
-task mover1 (type: Copy, dependsOn: ['borrarArchivosPruebas']) {
-    from "./origen1"
-	into "./destino"
-}
-
-task mover2 (type: Copy, dependsOn: ['borrarArchivosPruebas']) {
-    from "./origen2"
-	into "./destino"
-}
-
-task borrarArchivosPruebas(type: Delete) {
-   delete file('./destino').listFiles() 
 }

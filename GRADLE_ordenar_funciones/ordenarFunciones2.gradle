@@ -1,0 +1,19 @@
+
+
+// dependency expressed using task objects
+task hacerDespues2(dependsOn: [hacerAntes, hacerAntesAntes]) {
+    println "hacerDespues2"
+
+}
+
+// dependency expressed using task objects
+task hacerDespues3(dependsOn: [hacerAntes, hacerAntesAntes]) {
+    println "hacerDespues3"
+
+}
+
+// dependency expressed using task objects
+task hacerDespues4(dependsOn: [hacerAntes, hacerAntesAntes]) {
+    println "hacerDespues4"
+
+}

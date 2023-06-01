@@ -1,0 +1,17 @@
+
+//gradle verOrdenado
+//    > Task :verOrdenado
+//    Hola 1
+//    Hola 2
+//    Adios 1
+//    Adios 2
+task verOrdenado {
+    doLast{
+        println "Adios 1"
+        println "Adios 2" 
+    }
+    doFirst {
+        println "Hola 1"
+        println "Hola 2"
+    }
+}
