@@ -1,19 +1,44 @@
 
 
-// dependency expressed using task objects
-task hacerDespues2(dependsOn: [hacerAntes, hacerAntesAntes]) {
-    println "hacerDespues2"
+//gradle moverAlta                                                   
+//    > Task :borrarAlta
+//    borrarAlta
+//    > Task :borrarBaja
+//    borrarBaja
+//    > Task :moverAlta
+//    moverAlta
+task moverAlta (type: Copy, dependsOn: ['borrarAlta','borrarBaja']) {
+    from "./origen1"
+    into "./destino"
+    doLast {
+        println "moverAlta"
+
+    }
 
 }
 
-// dependency expressed using task objects
-task hacerDespues3(dependsOn: [hacerAntes, hacerAntesAntes]) {
-    println "hacerDespues3"
+task moverBaja (type: Copy, dependsOn: ['borrarAlta','borrarBaja']) {
+    from "./origen2"
+	into "./destino"
+    doLast  {
+        println "moverBaja"
+
+    }
 
 }
 
-// dependency expressed using task objects
-task hacerDespues4(dependsOn: [hacerAntes, hacerAntesAntes]) {
-    println "hacerDespues4"
+task borrarAlta(type: Delete) {
+    delete file('./destino').listFiles() 
+    doLast {
+            println "borrarAlta"
+    }
+
+}
+
+task borrarBaja(type: Delete) {
+    delete file('./destino').listFiles()  
+    doLast {
+        println "borrarBaja"
+    }
 
 }

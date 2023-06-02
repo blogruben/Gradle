@@ -3,14 +3,27 @@ plugins {
 }
 
 apply from: './hacerPrimero.gradle'
-apply from: './variables.gradle'
-apply from: './ordenarMoverFichero.gradle'
 apply from: './ordenarFunciones1.gradle'
 apply from: './ordenarFunciones2.gradle'
 apply from: './ordenarFunciones3.gradle'
+
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 task wrapVersion(type: Wrapper) {
    gradleVersion = '5.6' 
+}
+
+
+
+task aaaaa (type: Copy, dependsOn: ['bbbbb'])  {
+    doFirst{
+        println "aaaaa"
+    }
+}
+
+task bbbbb {
+    doFirst{
+        println "bbbbb"
+    }
 }

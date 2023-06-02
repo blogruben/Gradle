@@ -15,3 +15,17 @@ task verOrdenado {
         println "Hola 2"
     }
 }
+
+//gradle otraCosa
+//    > Task :otraCosa
+//    otraCosa1
+//    otraCosa2
+task otraCosa
+
+otraCosa.doFirst {
+    println 'otraCosa1'
+}
+
+otraCosa.doLast {
+    println 'otraCosa2'
+}

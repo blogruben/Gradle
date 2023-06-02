@@ -1,0 +1,29 @@
+
+
+//gradle tareaUno
+//    > Task :tareaDos
+//    tareaDos
+//    > Task :tareaTres
+//    tareaTres
+//    > Task :tareaUno
+//    tareaUno
+task tareaUno {
+    doLast {
+        println "tareaUno"
+    }
+}
+
+task tareaDos {
+    doLast {
+        println "tareaDos"
+    }
+}
+
+task tareaTres {
+    doLast {
+        println "tareaTres"
+    }
+}
+
+tareaUno.dependsOn tareaDos
+tareaUno.dependsOn tareaTres 

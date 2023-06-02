@@ -1,17 +1,26 @@
 
 //gradle hacerDespues 
-//  hacerDespues1
-//  hacerAntes
-//  hacerAntesAntes
-task hacerDespues1 {
-  dependsOn 'hacerAntes', 'hacerAntesAntes' // dependency expressed using task names, comma is required for more than one dependencies
-    println "hacerDespues1"
+//    > Task :hacerAntes     
+//    hacerAntes
+//    > Task :hacerAntesAntes
+//    hacerAntesAntes           
+//    > Task :hacerDespues   
+//    hacerDespues
+task hacerDespues {
+  dependsOn 'hacerAntesAntes', 'hacerAntes' 
+  doFirst{
+    println "hacerDespues"
+  }
 }
 
 task hacerAntes {
-    println "hacerAntes"
+    doFirst{
+        println "hacerAntes"
+    }
 }
 
 task hacerAntesAntes {
-    println "hacerAntesAntes"
+    doFirst{
+        println "hacerAntesAntes"
+    }
 }
