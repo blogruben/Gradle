@@ -14,7 +14,7 @@ jar {
 
 repositories {
     maven {
-		url="http://produccion.portal.es:8080/artifactory"
+		url="http://url:8080/artifactory"
     }
 }
 
