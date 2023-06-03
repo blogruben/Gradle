@@ -7,7 +7,7 @@ mainClassName = "$clasePrincipal" //clase principal para "gradlew -q run"
 allprojects {
     repositories {
         maven {
-	        url="http://ic01.pro.portal.ss:8081/artifactory/plugins-release"
+	        url="http://url:8081/artifactory/plugins-release"
         }
     }
 }
