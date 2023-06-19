@@ -29,22 +29,22 @@ public class InsertarUsuario extends HttpServlet {
         final String crearTabla = "CREATE TABLE IF NOT EXISTS user(id MEDIUMINT NOT NULL AUTO_INCREMENT ,nombre varchar(255))";
         final String insertarUser = "INSERT INTO user(nombre) VALUES(?)";
       
-        try(Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "", "");
-        PreparedStatement pstmtCreate = conn.prepareStatement(crearTabla);
-        PreparedStatement pstmtInsert = conn.prepareStatement(insertarUser)) {
-        
-        Class.forName("org.h2.Driver");
-        pstmtCreate.execute();
+        try(Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "", "")) {
+            Class.forName("org.h2.Driver");
+            try(PreparedStatement pstmtCreate = conn.prepareStatement(crearTabla)){
+                pstmtCreate.execute();
+            }
+            try(PreparedStatement pstmtInsert = conn.prepareStatement(insertarUser)){
+                pstmtInsert.setString(1, nombre);
+                pstmtInsert.executeUpdate();
 
-        pstmtInsert.setString(1, nombre);
-        pstmtInsert.executeUpdate();
-
-        ResultSet generatedKeys = pstmtInsert.getGeneratedKeys();
-        if (generatedKeys.next()) {
-            resp.getWriter().println("Id: "+generatedKeys.getLong(1));
-        }
-
-        } catch (ClassNotFoundException | SQLException e) {
+                ResultSet generatedKeys = pstmtInsert.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    resp.getWriter().println("Id: "+generatedKeys.getLong(1));
+                }
+            }
+        } 
+        catch (ClassNotFoundException | SQLException e) {
             resp.getWriter().println("Error "+e.getMessage());
         }
 

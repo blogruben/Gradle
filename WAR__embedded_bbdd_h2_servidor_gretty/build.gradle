@@ -21,9 +21,9 @@ dependencies {
 }
 
 gretty {
-    httpPort = 8080
-    contextPath = '/'
-    servletContainer = 'jetty9'  // o 'tomcat9'
+  httpPort = 8080
+  contextPath = '/'
+  servletContainer = 'jetty9'  // o 'tomcat9'
 	managedClassReload=true
 }
 
