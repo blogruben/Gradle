@@ -21,8 +21,11 @@ dependencies {
 }
 
 gretty {
+    httpPort = 8080
     contextPath = '/'
-    servletContainer = 'jetty9'
+    servletContainer = 'jetty9'  // o 'tomcat9'
+    managedClassReload=true
+    loggingLevel='DEBUG'
 }
 
 sourceCompatibility = 1.8
