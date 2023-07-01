@@ -1,9 +1,23 @@
 <web-app>  
    <context-param> 
-        <description>Variable</description> 
-        <param-name>myProp1</param-name> 
+        <description>Variable en entorno</description> 
+        <param-name>env</param-name> 
         <param-value>
-            hola
+            ${entorno}
+        </param-value> 
+    </context-param>
+   <context-param> 
+        <description>Ruta absoluta</description> 
+        <param-name>rutaAbsoluta</param-name> 
+        <param-value>
+            ${rutaAbsoluta}
+        </param-value> 
+    </context-param>
+    <context-param> 
+        <description>Ruta relativa</description> 
+        <param-name>rutaRelativa</param-name> 
+        <param-value>
+            ${rutaRelativa}
         </param-value> 
     </context-param>
     <jsp-config>

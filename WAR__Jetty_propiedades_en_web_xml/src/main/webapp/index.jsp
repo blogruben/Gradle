@@ -8,8 +8,12 @@
     <title>Variable de web.xml</title>
     <%
     ServletContext context = pageContext.getServletContext();
-    String prop1 = context.getInitParameter("myProp1");
-    out.println("<p>myProp1: "+prop1+"</p>");
+    String env = context.getInitParameter("env");
+    out.println("<p>entorno: "+env+"</p>");
+    String rutaRelativa = context.getInitParameter("rutaRelativa");
+    out.println("<p>rutaRelativa: "+rutaRelativa+"</p>");
+    String rutaAbsoluta = context.getInitParameter("rutaAbsoluta");
+    out.println("<p>rutaAbsoluta: "+rutaAbsoluta+"</p>");
     %>
 </body>
 </html>

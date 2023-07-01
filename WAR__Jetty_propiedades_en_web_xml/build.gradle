@@ -19,15 +19,20 @@ dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
 }
 
+ext.directorioRelativo = System.getProperty("user.dir").replace('\\', '/')+"/fichero"
+
 gretty {
     httpPort = 8080
     contextPath = '/'
     servletContainer = 'jetty9'  // o 'tomcat9'
     managedClassReload=true
     //loggingLevel='DEBUG'
+    //poner las variables en el web.xml al ejecutar gradle appStart
     webappCopy {
       filesMatching('WEB-INF/web.xml') {
-         filter {String line -> line.replaceAll('hola', "adios") }
+        filter {String line -> line.replaceAll('\\$\\{entorno\\}', entorno) }
+        filter {String line -> line.replaceAll('\\$\\{rutaAbsoluta\\}', rutaAbsoluta) }
+        filter {String line -> line.replaceAll('\\$\\{rutaRelativa\\}', directorioRelativo) }
       }
     }
 }
@@ -36,12 +41,18 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 task wrapVersion(type: Wrapper) {
-   gradleVersion = '5.6' 
+   gradleVersion = '8.1.1' 
 }
 
-//
+//poner las variables en el web.xml al compilar
 war {
     filesMatching('WEB-INF/web.xml') {
-       filter {String line -> line.replaceAll('hola', "adios") }
+      filter {String line -> line.replaceAll('entorno', entorno) }
+      filter {String line -> line.replaceAll('\\$\\{rutaAbsoluta\\}', rutaAbsoluta) }
+      filter {String line -> line.replaceAll('\\$\\{rutaRelativa\\}', directorioRelativo) }
     }
+}
+
+task rutaRelativa() {
+   println System.getProperty("user.dir").replace('\\', '/')+"/fichero"
 }
