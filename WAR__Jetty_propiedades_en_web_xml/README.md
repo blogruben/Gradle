@@ -7,7 +7,7 @@ requiere gradle 4.9 y jdk 1.8
 2. comprobar que la version es la 4.9 -> .\gradlew -v   
 3. compilar -> .\gradlew build
 4. arrancar servidor (tarea de gretty) -> .\gradlew appStart
-5. Ir a  -> http://localhost:8080/factorial?numero=7
-6. Ir a  -> http://localhost:8080/sumar?num1=2&num2=3
-7. Salir -> ctrl+C para cerrar jetty
+5. Salir -> ctrl+C para cerrar jetty
 
+
+Vamos http://localhost:8080/ 
