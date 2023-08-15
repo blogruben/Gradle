@@ -25,5 +25,5 @@ task tareaTres {
     }
 }
 
-tareaUno.dependsOn tareaDos
-tareaUno.dependsOn tareaTres 
+tareaDos.dependsOn tareaUno
+tareaDos.finalizedBy tareaTres 

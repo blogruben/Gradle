@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+
+//Esta funcion seria igual que `gradle clean build publish ...`
+//Se espera a que se termine la tarea anterior para ejecutar la siguiente
+
+  task releaseAfterMath(type: GradleBuild) {
+      tasks = [
+        'clean', 
+        'build',
+        'publish',
+        'publishToMavenLocal',
+        'commitNewVersionTask', 
+        'gitChangelogTask', 
+        'commitChangelogTask'
+      ]
+  }
