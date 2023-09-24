@@ -1,6 +1,16 @@
 plugins {
+    id "application"
     id 'java'
 }
+
+ext {
+   javaMainClass = "org.java.ruben.ejecutar.App"
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
 
 //gradle argumentosFijos
 task argumentosFijos (type: JavaExec){
@@ -85,8 +95,12 @@ task verPropiedades {
     }
 }
 
+//compileJava.options.fork = true
+//compileJava.options.forkOptions.executable = '/jdk/bin'
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
 task wrapVersion(type: Wrapper) {
    gradleVersion = '5.6' 
 }

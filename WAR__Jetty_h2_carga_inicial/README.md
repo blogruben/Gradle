@@ -1,4 +1,9 @@
 
+
+# Requisitos 
+- JDK8 
+
+
 # Arrancar servidor 
 ``gradle appStart``
 ctrl+C para cerrar jetty
