@@ -3,7 +3,7 @@ plugins {
     id 'net.saliman.cobertura' version '4.0.0'
 }
 
-task wrapVersion(type: Wrapper) {
+task wrap(type: Wrapper) {
    gradleVersion = '5.6'
 }
 

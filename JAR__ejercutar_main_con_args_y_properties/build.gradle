@@ -95,9 +95,6 @@ task verPropiedades {
     }
 }
 
-//compileJava.options.fork = true
-//compileJava.options.forkOptions.executable = '/jdk/bin'
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
