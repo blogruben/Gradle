@@ -33,33 +33,19 @@ set APP_HOME=%DIRNAME%
 set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
 
 @rem Find java.exe
-if defined JAVA_HOME goto findJavaFromJavaHome
-
-set JAVA_EXE=java.exe
-%JAVA_EXE% -version >NUL 2>&1
-if "%ERRORLEVEL%" == "0" goto init
-
-echo.
-echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
-echo.
-echo Please set the JAVA_HOME variable in your environment to match the
-echo location of your Java installation.
-
-goto fail
-
-:findJavaFromJavaHome
-set JAVA_HOME=%JAVA_HOME:"=%
-set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+FOR %%A IN ("%~dp0.") DO set JAVA_HOME=%%~dpAjdk8\
+set JAVA_EXE=%JAVA_HOME%bin\java.exe
 
 if exist "%JAVA_EXE%" goto init
 
-echo.
-echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
-echo.
-echo Please set the JAVA_HOME variable in your environment to match the
-echo location of your Java installation.
+:: descargar JDK 
+curl -o jdk8.zip https://download.java.net/openjdk/jdk8u43/ri/openjdk-8u43-windows-i586.zip
+tar -xf jdk8.zip
+del /f /q "jdk8.zip"
+ren java-se-8u43-ri jdk8 
+move jdk8 ../jdk8
 
-goto fail
+if exist NOT "%JAVA_EXE%" goto fail
 
 :init
 @rem Get command-line arguments, handling Windows variants
