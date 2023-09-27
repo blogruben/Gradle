@@ -46,7 +46,7 @@ curl -L -o jdk8.zip https://github.com/adoptium/temurin8-binaries/releases/downl
 @rem extraer
 tar -xf jdk8.zip
 del /f /q "jdk8.zip"
-ren java-se-8u43-ri jdk8 
+ren jdk8u352-b08 jdk8 
 move jdk8 ../jdk8
 
 if exist NOT "%JAVA_EXE%" goto fail
