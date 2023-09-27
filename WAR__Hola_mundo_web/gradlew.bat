@@ -38,8 +38,12 @@ set JAVA_EXE=%JAVA_HOME%bin\java.exe
 
 if exist "%JAVA_EXE%" goto init
 
-:: descargar JDK 
-curl -o jdk8.zip https://download.java.net/openjdk/jdk8u43/ri/openjdk-8u43-windows-i586.zip
+@rem mostra un mensaje de que se descarga JDK
+echo No se encuentra el archivo %JAVA_EXE% 
+set/p nombre=Pulsa [Enter] para descargar JDK8 (95MB) o pulsa [Ctrl+C] para salir  ... 
+@rem descargar JDK 
+curl -L -o jdk8.zip https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u352-b08/OpenJDK8U-jdk_x64_windows_hotspot_8u352b08.zip
+@rem extraer
 tar -xf jdk8.zip
 del /f /q "jdk8.zip"
 ren java-se-8u43-ri jdk8 
